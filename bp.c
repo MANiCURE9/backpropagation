@@ -10,57 +10,57 @@
 
 //**********************struct for dataset**********************************//
 typedef struct ENTRY{   //dataset for each sample data
-  double x1;
-  double x2;
-  int desired_value;
-} ENTRY;
+    double x1;
+    double x2;
+    int desired_value;
+}ENTRY;
 
 
 //**********************struct for NEURON**********************************//
 typedef struct NEURON{   
-  double input;
-  double output;
-  double *weights;
-  double delta;
-  double error;
-} NEURON;
+    double input;
+    double output;
+    double *weights;
+    double delta;
+    double error;
+}NEURON;
 
 //**********************struct for LAYER***********************************//
 typedef struct LAYER{
-  int numberOfNeurons;
-  NEURON *neurons;
-} LAYER;
+    int numberOfNeurons;
+    NEURON *neurons;
+}LAYER;
 
 //*********************struct for NNET************************************//
 typedef struct NNET{
-  double *inputs;
-  int numberOfLayers;
-  LAYER *layers;
-} NNET; //neural network
+    double *inputs;
+    int numberOfLayers;
+    LAYER *layers;
+}NNET; //neural network
 
 
 //********sigmoid function and randomWeight generator********************//
 
 double sigmoid(double v)
 {
-  return 1/(1+ exp(-v));
+    return 1/(1+ exp(-v));
 }
 
 double randomWeight()  //random weight generator between -0.5 ~ 0.5 
 {
-  return ((int)rand()%100000)/(float) 100000 - 0.5;
+    return ((int)rand()%100000)/(float) 100000 - 0.5;
 }
 
 //****************************create neuron network*********************//
 
 void createNeuronNetwork(NNET *net, int numberOfLayers, int *neuronsOfLayer )
 { 
-  //in order to create a neural network, 
-  //we need know how many layers and how many neurons in each layer
+    //in order to create a neural network, 
+    //we need know how many layers and how many neurons in each layer
 
-  int i, j, k;
-  srand(time(NULL));
-  net->numberOfLayers = numberOfLayers;
+    int i, j, k;
+    srand(time(NULL));
+    net->numberOfLayers = numberOfLayers;
   
   assert(numberOfLayers >= 3);
   
